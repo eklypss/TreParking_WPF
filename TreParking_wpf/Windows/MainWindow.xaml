@@ -1,0 +1,35 @@
+﻿<Window x:Class="TreParking_wpf.Windows.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:TreParking_wpf" xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="TreParking" Width="900" Height="700" Background="{DynamicResource MaterialDesignPaper}" FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Loaded="Window_Loaded" TextElement.FontSize="14" TextElement.FontWeight="Medium" TextElement.Foreground="{DynamicResource MaterialDesignBody}" WindowStyle="ToolWindow" mc:Ignorable="d">
+    <!--  Main border  -->
+    <Border Margin="10">
+        <!--  Main StackPanel  -->
+        <StackPanel>
+            <!--  Map control  -->
+            <m:Map x:Name="MapControl" Height="520" Center="61.497740, 23.760855" ZoomLevel="11.5" />
+            <!--  Filter grid  -->
+            <TextBlock Margin="20,5,0,0" Text="Filter" />
+            <Grid Margin="5">
+                <!--  Filter grid definitions  -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!--  Filter grid controls  -->
+                <CheckBox
+                    x:Name="HideClosed" Grid.Column="0" HorizontalAlignment="Center" Checked="HideClosed_Checked" Content="Hide closed garages"
+                    Unchecked="HideClosed_Unchecked" />
+                <CheckBox
+                    x:Name="HideOpen" Grid.Column="1" HorizontalAlignment="Center" Checked="HideOpen_Checked" Content="Hide open garages"
+                    Unchecked="HideOpen_Unchecked" />
+                <CheckBox
+                    x:Name="HideFull" Grid.Column="2" HorizontalAlignment="Center" Checked="HideFull_Checked" Content="Hide full garages"
+                    Unchecked="HideFull_Unchecked" />
+            </Grid>
+            <!--  Refresh button control  -->
+            <Button
+                x:Name="RefreshButton" MinHeight="15" Margin="0,10,0,0" VerticalAlignment="Center" Click="RefreshButton_Click"
+                Content="Refresh" FontSize="17" ToolTip="Use this button to update the parking data." />
+            <TextBlock x:Name="LastUpdateLabel" Margin="0,5,0,0" VerticalAlignment="Bottom" FontSize="12" Text="Last update" />
+        </StackPanel>
+    </Border>
+</Window>
